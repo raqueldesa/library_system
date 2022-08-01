@@ -2,7 +2,7 @@
 
 ## Installation
 
-###FrontEnd
+### FrontEnd
 
 ```bash
 cd FrontEnd
@@ -12,7 +12,7 @@ npm start or yarn start
 The application will run on port 3000
 
 
-###BackEnd
+### BackEnd
 
 ```bash
 cd BackEnd

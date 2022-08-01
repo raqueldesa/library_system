@@ -29,8 +29,8 @@ On BackEnd/src/database.js
   );
 ```
 
-root -> user
-password -> database's password
-localhost -> where it is hosted
-3306 -> port
-library_system -> databases's name
+- root -> user
+- password -> database's password
+- localhost -> where it is hosted
+- 3306 -> port
+- library_system -> databases's name

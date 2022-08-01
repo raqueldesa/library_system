@@ -17,7 +17,7 @@ connect();
 
 export async function selectBooks() {
   const conn = await connect();
-  const [rows] = await conn.query("SELECT * FROM books;");
+  const [rows] = await conn.query("SELECT * FROM books ORDER BY book_name;");
   return rows;
 }
 
@@ -36,17 +36,15 @@ export async function registerBook({
   return await conn.query(SQL, bookInfo);
 }
 
-export async function updateBook({
-  ISBN,
-  book_name,
-  author,
-  npages,
-  copies_available,
-}) {
+export async function updateBook(
+  { book_name, author, npages, copies_available },
+  isbn
+) {
+  console.log(book_name);
   const conn = await connect();
   const SQL =
     "UPDATE books SET book_name = ?, author= ?, npages= ?, copies_available= ? WHERE ISBN = ?;";
-  const bookInfo = [book_name, author, npages, copies_available, ISBN];
+  const bookInfo = [book_name, author, npages, copies_available, isbn];
 
   return await conn.query(SQL, bookInfo);
 }

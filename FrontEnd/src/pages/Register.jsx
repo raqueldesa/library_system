@@ -5,10 +5,10 @@ import Form from "../components/Forms";
 const Register = () => {
   const history = useHistory();
   return (
-    <div>
-      <Form />
+    <>
       <Button onClick={() => history.push("/")}>Home</Button>
-    </div>
+      <Form />
+    </>
   );
 };
 

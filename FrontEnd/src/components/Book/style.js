@@ -6,15 +6,15 @@ export const StyledBook = styled.div`
 
   border-radius: 7px;
 
-  background-color: #ffffff;
-  box-shadow: 0 0 6px 0px rgba(40, 42, 42, 0.7);
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 6px 0px rgba(0, 0, 0, 0.9);
 
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
 
-  padding: 10px;
+  padding: 20px;
   margin-top: 10px;
 
   .info {
@@ -27,9 +27,11 @@ export const StyledBook = styled.div`
   }
 
   button {
-    height: 35px;
-    width: 35px;
+    height: 40px;
+    width: 40px;
     margin: 5px;
+
+    font-size: 16px;
 
     border-style: none;
     border-radius: 10px;

@@ -40,7 +40,6 @@ export async function updateBook(
   { book_name, author, npages, copies_available },
   isbn
 ) {
-  console.log(book_name);
   const conn = await connect();
   const SQL =
     "UPDATE books SET book_name = ?, author= ?, npages= ?, copies_available= ? WHERE ISBN = ?;";

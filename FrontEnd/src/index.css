@@ -15,4 +15,9 @@ code {
 * {
   margin: 0;
   padding: 0;
+  font-family: "Lora", serif;
+}
+
+h3 {
+  font-size: 24px;
 }

@@ -35,16 +35,16 @@ async function changeBook(newBook, isbn) {
   //   npages: 230,
   //   copies_available: 24,
   // };
-  console.log(isbn + " change");
+
   const result = await updateBook(newBook, isbn);
-  console.log(result);
+
   return result;
 }
 
 async function removeBook(bookISBN) {
   // const bookISBN = "1-4028-9462-1";
   const result = await deleteBook(bookISBN);
-  console.log(result);
+
   return result;
 }
 
@@ -58,7 +58,6 @@ async function removeBook(bookISBN) {
 app.post("/register", (req, res) => {
   const newBook = req.body;
   registerNewBook(newBook);
-  console.log(req.body);
 });
 
 app.get("/books", (req, res) => {
@@ -68,7 +67,7 @@ app.get("/books", (req, res) => {
 app.put("/edit/:isbn", (req, res) => {
   const editedBook = req.body;
   const { isbn } = req.params;
-  console.log(isbn + " put");
+
   changeBook(editedBook, isbn);
 });
 

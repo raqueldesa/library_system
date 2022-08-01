@@ -2,10 +2,12 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { StyledEditForm, StyledDiv } from "./style";
+import { StyledDiv } from "./style";
 import api from "../../api";
 import Button from "../Button";
 import { useHistory } from "react-router-dom";
+import { StyledDivVidro } from "../ContainerBooks/style";
+import { StyledForm, StyledInputArea } from "../Forms/style";
 
 const EditForm = ({
   setOpenEditForm,
@@ -51,45 +53,58 @@ const EditForm = ({
 
   return (
     <StyledDiv>
-      <StyledEditForm
-        className="form"
-        onSubmit={handleSubmit(onSubmitFunction)}
-      >
-        <input
-          placeholder="Nome"
-          defaultValue={name}
-          {...register("book_name")}
-        />
-        {errors.book_name?.message}
-        <input
-          placeholder="Author"
-          defaultValue={author}
-          {...register("author")}
-        />
-        {errors.author?.message}
-        <input
-          placeholder="Number of pages"
-          defaultValue={npages}
-          {...register("npages")}
-        />
-        {errors.npages?.message}
-        <input
-          placeholder="Copies available"
-          defaultValue={copies_available}
-          {...register("copies_available")}
-        />
-        {errors.copies_available?.message}
-        <div>
-          <Button
-            onClick={() => {
-              setOpenEditForm(false);
-            }}
-          >
-            Cancel
-          </Button>
-          <Button type="submit">Edit</Button>
-        </div>
-      </StyledEditForm>
+      <StyledDivVidro height={"400px"} width={"230px"}>
+        <h3>Update the book</h3>
+        <StyledForm className="form" onSubmit={handleSubmit(onSubmitFunction)}>
+          <StyledInputArea>
+            <input
+              placeholder="Nome"
+              defaultValue={name}
+              {...register("book_name")}
+            />
+            {errors.book_name && <p>{errors.book_name.message}</p>}
+          </StyledInputArea>
+          <StyledInputArea>
+            <input
+              placeholder="Author"
+              defaultValue={author}
+              {...register("author")}
+            />
+            {errors.author && <p>{errors.author.message}</p>}
+          </StyledInputArea>
+          <StyledInputArea>
+            <input
+              placeholder="Number of pages"
+              defaultValue={npages}
+              {...register("npages")}
+            />
+            {errors.npages && <p>{errors.npages.message}</p>}
+          </StyledInputArea>
+          <StyledInputArea>
+            <input
+              placeholder="Copies available"
+              defaultValue={copies_available}
+              {...register("copies_available")}
+            />
+            {errors.copies_available && (
+              <p>{errors.copies_available.message}</p>
+            )}
+          </StyledInputArea>
+          <div className="buttons">
+            <Button
+              width="85px"
+              onClick={() => {
+                setOpenEditForm(false);
+              }}
+            >
+              Cancel
+            </Button>
+            <Button width="85px" type="submit">
+              Edit
+            </Button>
+          </div>
+        </StyledForm>
+      </StyledDivVidro>
     </StyledDiv>
   );
 };

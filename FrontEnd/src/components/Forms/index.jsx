@@ -4,7 +4,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useHistory } from "react-router-dom";
 
 import api from "../../api";
-import { StyledForm } from "./style";
+import { StyledForm, StyledInputArea } from "./style";
+import { StyledDivVidro } from "../ContainerBooks/style";
+import Button from "../Button";
 
 const Form = () => {
   const history = useHistory();
@@ -42,30 +44,43 @@ const Form = () => {
       .catch((error) => {
         console.error(error);
       });
-    console.log(data);
     history.push("/");
   };
 
   return (
-    <div className="container">
-      <h3>Formulário</h3>
-      <StyledForm className="form" onSubmit={handleSubmit(onSubmitFunction)}>
-        <input placeholder="ISBN" {...register("ISBN")} />
-        {errors.ISBN?.message}
-        <input placeholder="Nome" {...register("book_name")} />
-        {errors.book_name?.message}
-        <input placeholder="Author" {...register("author")} />
-        {errors.author?.message}
-        <input placeholder="Number of pages" {...register("npages")} />
-        {errors.npages?.message}
-        <input
-          placeholder="Copies available"
-          {...register("copies_available")}
-        />
-        {errors.copies_available?.message}
-        <button type="submit">Register</button>
-      </StyledForm>
-    </div>
+    <>
+      <StyledDivVidro height={"400px"} width={"230px"}>
+        <h3>New Book</h3>
+        <StyledForm className="form" onSubmit={handleSubmit(onSubmitFunction)}>
+          <StyledInputArea>
+            <input placeholder="ISBN" {...register("ISBN")} />
+            {errors.ISBN && <p>{errors.ISBN.message}</p>}
+          </StyledInputArea>
+          <StyledInputArea>
+            <input placeholder="Nome" {...register("book_name")} />
+            {errors.book_name && <p>{errors.book_name.message}</p>}
+          </StyledInputArea>
+          <StyledInputArea>
+            <input placeholder="Author" {...register("author")} />
+            {errors.author && <p>{errors.author.message}</p>}
+          </StyledInputArea>
+          <StyledInputArea>
+            <input placeholder="Number of pages" {...register("npages")} />
+            {errors.npages && <p>{errors.npages.message}</p>}
+          </StyledInputArea>
+          <StyledInputArea>
+            <input
+              placeholder="Copies available"
+              {...register("copies_available")}
+            />
+            {errors.copies_available && (
+              <p>{errors.copies_available.message}</p>
+            )}
+          </StyledInputArea>
+          <Button type="submit">Register</Button>
+        </StyledForm>
+      </StyledDivVidro>
+    </>
   );
 };
 

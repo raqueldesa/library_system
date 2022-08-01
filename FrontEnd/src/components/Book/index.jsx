@@ -4,6 +4,9 @@ import api from "../../api";
 import EditForm from "../EditForm";
 import StyledBook from "./style";
 
+import { MdModeEdit } from "react-icons/md";
+import { TbTrash } from "react-icons/tb";
+
 const Book = ({
   isbn,
   name,
@@ -19,7 +22,6 @@ const Book = ({
     setOpenEditForm(true);
   }
   function deleteBook() {
-    console.log(isbn);
     api.delete(`/delete/${isbn}`);
     history.push("/");
   }
@@ -35,10 +37,10 @@ const Book = ({
         </div>
         <div>
           <button onClick={handleClickBook} className="edit">
-            ed
+            <MdModeEdit />
           </button>
           <button onClick={deleteBook} className="remove">
-            re
+            <TbTrash />
           </button>
         </div>
       </StyledBook>
